@@ -59,7 +59,7 @@
 
             <p>
                 <label for="email2">Confirm email</label>
-                <input id="email2" name="email2" type="email2" value="<?php getInputValue('email')?>"required>
+                <input id="email2" name="email2" type="email" value="<?php getInputValue('email2')?>"required>
             </p>
 
             <p>

@@ -34,7 +34,7 @@
             $profilePic = "assets/images/profile-pics/group-profile-pic.jpeg";
             $date = date("Y-m-d");
 
-            $result = mysqli_query($this->con, "INSERT INTO users VALUES('', '$tn', '$em', '$encryptedPw',  '$date', '$profilePic' )");
+            $result = mysqli_query($this->con, "INSERT INTO users VALUES('', '$tn', '$em', '$encryptedPw', '$date', '$profilePic' )");
             return $result;
         }
 
