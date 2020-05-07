@@ -1,12 +1,12 @@
 <?php
-    include("includes/config.php");
-    include("includes/classes/Account.php");
-    include("includes/classes/Constants.php");
+	include("includes/config.php");
+	include("includes/classes/Account.php");
+	include("includes/classes/Constants.php");
 
-    $account = new Account($con);
+	$account = new Account($con);
 
-    include("includes/handlers/login-handler.php");
-    include("includes/handlers/register-handler.php");
+	include("includes/handlers/register-handler.php");
+	include("includes/handlers/login-handler.php");
 
 	function getInputValue($name) {
 		if(isset($_POST[$name])) {
@@ -15,74 +15,69 @@
 	}
 ?>
 
+<html>
+<head>
+	<title>Quarantunes</title>
+</head>
+<body>
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quarantunes</title>
-  </head>
-  <body>
-    <div id="inputContainer">
+	<div id="inputContainer">
+		<form id="loginForm" action="register.php" method="POST">
+			<h2>Login to your account</h2>
+			<p>
+				<label for="teamname">Team name</label>
+				<input id="teamname" name="teamname" type="text"  required>
+			</p>
+			<p>
+				<label for="loginPassword">Password</label>
+				<input id="loginPassword" name="loginPassword" type="password" required>
+			</p>
 
-        <form id="loginForm" action="register.php" method="POST">
-            <h1>Team Login</h1>
-            <p>       
-                <label for="loginTeamname">Team name</label>
-                <input id="loginTeamname" name="loginTeamname" type="text" required>
-            </p>
-            <p>
-                <label for="loginPassword">Password</label>
-                <input type="text" required  name="loginPassword" required>
-            </p>
-            <button type="submit" name="loginButton">
-            submit
-            </button>
-        </form>
+			<button type="submit" name="loginButton">LOG IN</button>
+			
+		</form>
 
-        <form id="registerForm" action="register.php" method="POST">    
-            <h2>Create Team Account</h2>
 
-            <p>
-                <?php echo $account->getError(Constants::$teamnameCharacters);?>
-                <label for="teamname">Team Name</label>
-                <input id="teamname" name="teamname" type="text" value="<?php getInputValue('teamname')?>" required>
-            </p>
 
-            <p>
-                <?php echo $account->getError(Constants::$emailsUnmatched)?>  
-                <?php echo $account->getError(Constants::$emailInvalid)?>
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" value="<?php getInputValue('email')?>"required>
-            </p>
+		<form id="register" action="register.php" method="POST">
+			<h2>Create team account</h2>
+			<p>
+				<?php echo $account->getError(Constants::$teamnameCharacters); ?>
+				<label for="teamname">Team name</label>
+				<input id="teamname" name="teamname" type="text" value="<?php getInputValue('teamname') ?>" required>
+			</p>
 
-            <p>
-                <label for="email2">Confirm email</label>
-                <input id="email2" name="email2" type="email" value="<?php getInputValue('email2')?>"required>
-            </p>
+			<p>
+				<?php echo $account->getError(Constants::$emailsUnmatched); ?>
+				<?php echo $account->getError(Constants::$emailInvalid); ?>
+				<label for="email">Email</label>
+				<input id="email" name="email" type="email" value="<?php getInputValue('email') ?>" required>
+			</p>
 
-            <p>
-                <?php echo $account->getError(Constants::$passwordsUnmatched)?>
+			<p>
+				<label for="email2">Confirm email</label>
+				<input id="email2" name="email2" type="email" value="<?php getInputValue('email2') ?>" required>
+			</p>
 
-                <?php echo $account->getError(Constants::$passwordCharacters)?>
+			<p>
+				<?php echo $account->getError(Constants::$passwordsUnmatched); ?>
+				<?php echo $account->getError(Constants::$passwordOnlyCharacters); ?>
+				<?php echo $account->getError(Constants::$passwordCharacters); ?>
+				<label for="password">Password</label>
+				<input id="password" name="password" type="password"  required>
+			</p>
 
-                <?php echo $account->getError(Constants::$passwordOnlyCharacters)?>
+			<p>
+				<label for="password2">Confirm password</label>
+				<input id="password2" name="password2" type="password"  required>
+			</p>
 
-                <label for="password">Password</label>
-                <input id="password" name="password"type="password" required>
-            </p>
+			<button type="submit" name="registerButton">SIGN UP</button>
+			
+		</form>
 
-            <p>
-                <label for="password2">Confirm Password</label>
-                <input id="password2" name="password2" type="password" required>
 
-            </p>
+	</div>
 
-            <button type="submit" name="registerButton">submit</button>
-
-        </form>
-
-    </div>
-  </body>
+</body>
 </html>
