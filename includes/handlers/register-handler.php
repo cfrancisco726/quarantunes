@@ -26,9 +26,10 @@
         $password = sanitizePassword($_POST['password']);
         $password2 = sanitizePassword($_POST['password2']);
 
-        $wasSuccessful = $account->register($teamname, $email, $email2, $password, $password2);
+        $registerSuccessful = $account->register($teamname, $email, $email2, $password, $password2);
 
-        if($wasSuccessful == true) { 
+        if($registerSuccessful) { 
+            $_SESSION['userLoggedIn'] = $loginTeamname;
             header("Location: index.php");
         }
     }

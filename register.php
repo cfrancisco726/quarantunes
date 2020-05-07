@@ -25,8 +25,9 @@
 		<form id="loginForm" action="register.php" method="POST">
 			<h2>Login to your account</h2>
 			<p>
-				<label for="teamname">Team name</label>
-				<input id="teamname" name="teamname" type="text"  required>
+            <?php echo $account->getError(Constants::$loginFailed); ?>
+				<label for="loginTeamname">Team name</label>
+				<input id="loginTeamname" name="loginTeamname" type="text"  required>
 			</p>
 			<p>
 				<label for="loginPassword">Password</label>
@@ -43,6 +44,7 @@
 			<h2>Create team account</h2>
 			<p>
 				<?php echo $account->getError(Constants::$teamnameCharacters); ?>
+                <?php echo $account->getError(Constants::$teamnameTaken); ?>
 				<label for="teamname">Team name</label>
 				<input id="teamname" name="teamname" type="text" value="<?php getInputValue('teamname') ?>" required>
 			</p>
@@ -50,6 +52,7 @@
 			<p>
 				<?php echo $account->getError(Constants::$emailsUnmatched); ?>
 				<?php echo $account->getError(Constants::$emailInvalid); ?>
+                <?php echo $account->getError(Constants::$emailTaken); ?>
 				<label for="email">Email</label>
 				<input id="email" name="email" type="email" value="<?php getInputValue('email') ?>" required>
 			</p>

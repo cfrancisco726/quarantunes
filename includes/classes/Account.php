@@ -9,6 +9,19 @@
 			$this->errorArray = array();
 		}
 
+        public function login($tn ,$pw){ 
+            $pw = md5($pw);
+            $loginQuery = mysqli_query($this->con, "SELECT * FROM users WHERE teamname='$tn' and password='$pw' ");
+
+            if(mysqli_num_rows($loginQuery) == 1) {
+                return true;
+            } 
+            else {
+                array_push($this->errorArray, Constants::$loginFailed);
+                return false;
+            }
+        }
+        
 		public function register($tn, $em, $em2, $pw, $pw2) {
 			$this->validateTeamname($tn);
 			$this->validateEmails($em, $em2);
@@ -29,29 +42,13 @@
 			}
 			return "<span class='errorMessage'>$error</span>";
 		}
-
-		// private function insertUserDetails($tn, $em, $pw) {
-		// 	$encryptedPw = md5($pw);
-		// 	$profilePic = "assets/images/profile-pics/group-profile-pic.jpg";
-		// 	$date = date("Y-m-d");
-
-        //     echo "INSERT INTO users VALUES (null, '$tn', '$em', '$encryptedPw', '$date', '$profilePic')";
-        //     $result = mysqli_query($this->con, "INSERT INTO users VALUES (null, '$tn', '$em', '$encryptedPw' '$date', '$profilePic')");
-        //     echo "Error: " . mysqli_error($this->con);
-		// 	return $result;
-        // }
         
         private function insertUserDetails($tn, $em, $pw) {
 			$encryptedPw = md5($pw);
-			$profilePic = "assets/images/profile-pics/group-profile-pic";
-			$date = date("Y-m-d");
-
-            echo "INSERT INTO users VALUES (null, '$tn', '$em', '$encryptedPw', '$date', '$profilePic')";
+            $profilePic = "assets/images/profile-pics/group-profile-pic";
+            $date = date("Y-m-d");
 
             $result = mysqli_query($this->con, "INSERT INTO users VALUES (null, '$tn', '$em', '$encryptedPw', '$date', '$profilePic')");
-            
-            echo "Error: " . mysqli_error($this->con);
-
 			return $result;
 		}
 
@@ -60,8 +57,15 @@
 			if(strlen($tn) > 25 || strlen($tn) < 3) {
 				array_push($this->errorArray, Constants::$teamnameCharacters);
 				return;
-			}
-		}
+            }
+            
+            $checkTeamnameQuery = mysqli_query($this->con, "SELECT email FROM users WHERE teamname='$tn'");
+            if(mysqli_num_rows($checkTeamnameQuery) !=0 ){
+                array_push($this->errorArray, Constants::$teamnameTaken);
+                return; 
+            }
+
+        }
 
 		private function validateEmails($em, $em2) {
 			if($em != $em2) {
@@ -72,7 +76,13 @@
 			if(!filter_var($em, FILTER_VALIDATE_EMAIL)) {
 				array_push($this->errorArray, Constants::$emailInvalid);
 				return;
-			}
+            }
+            
+            $checkEmailQuery = mysqli_query($this->con, "SELECT teamname FROM users WHERE email='$em'");
+            if(mysqli_num_rows($checkEmailQuery) !=0) {
+                array_push($this->errorArray, Constants::$emailTaken);
+                return; 
+            }
 
 		}
 
