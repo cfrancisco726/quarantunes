@@ -20,9 +20,27 @@ if (isset($_SESSION['userLoggedIn'])) {
     <body>
         <div id="playerBarContainer">
             <div id="playerBar">
-                <div id="playerBarLeft">left</div>
+
+                <div id="playerBarLeft">
+                    <div class="container content">
+                        <div class="albumArt">
+                            <img src="assets/images/album-covers/theLowEndTheory.png" alt="album-cover" class="albumCover">
+                        </div>
+
+                        <div class="trackInfo">
+                            <div class="trackArtist">
+                                <div>A Tribe Called Quest</div>
+                            </div>
+                        
+                            <div class="trackSong">
+                                <div>Excursions</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div id="playerBarMiddle">
-                    <div class="content playerControls" ></div>
+                    <div class="container playerControls"></div>
                         <div class="buttons">
 
                             <button class="controlButton shuffle" title="Shuffle button">
@@ -37,8 +55,8 @@ if (isset($_SESSION['userLoggedIn'])) {
                                 <img src="assets/images/icons/play.png" title="Play button"alt="play">
                             </button>
 
-                            <button class="controlButton pause" title="Pause button">
-                                <img src="assets/images/icons/play.png" title="Pause button" alt="play">
+                            <button class="controlButton pause" title="Pause button" style="display: none;">
+                                <img src="assets/images/icons/pause.png" title="Pause button" alt="pause">
                             </button>
                             
 
@@ -49,13 +67,40 @@ if (isset($_SESSION['userLoggedIn'])) {
                             <button class="controlButton repeat" title="Repeat Button">
                                 <img src="assets/images/icons/repeat.png" alt="repeat">
                             </button>
-                            
+
+                        </div>
+                        <div class="progressBarContainer">
+                            <div class="progressTime current">0:00</div>
+
+                            <div class="progressBar">
+                                <div class="progressBarBg">
+                                    <div class="progress"></div>
+                                </div>
+                            </div>
+
+                            <div class="progressTime remaining">0:00</div>
                         </div>
                     </div>   
+                
                 <div>
+
             </div>
 
-            <div id="playerBarRight">right</div>
+            <div id="playerBarRight">
+                <div class="container volume">
+                    <div>
+                        <button class="controlButton volume" title="Volume Button">
+                            <img src="assets/images/icons/volume.png" alt="volume">
+                         </button>
+                    </div>
+
+                    <div class="progressBar">
+                        <div class="progressBarBg">
+                            <div class="progress"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
             </div>
         </div>    
