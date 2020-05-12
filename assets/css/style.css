@@ -1,0 +1,59 @@
+.html,
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+#playerBarContainer {
+    width: 100%;
+    background-color: #282828;
+    position: fixed;
+    min-width: 620px;
+    height: 100px;
+    bottom: 0;
+}
+
+#playerBar {
+    display: flex;
+    height: 100px;
+    padding: 10px;
+    box-sizing: border-box;
+    color: white;
+    width: 100%;
+}
+
+#playerBarLeft,
+#playerBarRight {
+    width: 30%;
+    min-width: 180px;
+}
+
+#playerBarMiddle {
+    width: 40%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content .playerControls {
+    width: 100%;
+}
+
+.playerButton {
+	background-color: transparent;
+    border: none;
+    vertical-align: middle;
+}
+
+.playerControls .buttons {
+	margin: 0 auto;
+    display: table;
+}
+
+.buttons img {
+    height:35px;
+    width:35px;
+}
+

@@ -1,18 +1,18 @@
 <?php
-	include("includes/config.php");
-	include("includes/classes/Account.php");
-	include("includes/classes/Constants.php");
+include 'includes/config.php';
+include 'includes/classes/Account.php';
+include 'includes/classes/Constants.php';
 
-	$account = new Account($con);
+$account = new Account($con);
 
-	include("includes/handlers/register-handler.php");
-	include("includes/handlers/login-handler.php");
+include 'includes/handlers/register-handler.php';
+include 'includes/handlers/login-handler.php';
 
-	function getInputValue($name) {
-		if(isset($_POST[$name])) {
-			echo $_POST[$name];
-		}
-	}
+function getInputValue($name) {
+    if (isset($_POST[$name])) {
+        echo $_POST[$name];
+    }
+}
 ?>
 
 <html>
@@ -31,7 +31,7 @@
 			</p>
 			<p>
 				<label for="loginPassword">Password</label>
-				<input id="loginPassword" name="loginPassword" type="password" required>
+				<input id="loginPassword" name="loginPassword"      type="password" required>  
 			</p>
 
 			<button type="submit" name="loginButton">LOG IN</button>
@@ -46,7 +46,7 @@
 				<?php echo $account->getError(Constants::$teamnameCharacters); ?>
                 <?php echo $account->getError(Constants::$teamnameTaken); ?>
 				<label for="teamname">Team name</label>
-				<input id="teamname" name="teamname" type="text" value="<?php getInputValue('teamname') ?>" required>
+				<input id="teamname" name="teamname" type="text" value="<?php getInputValue('teamname'); ?>" required>
 			</p>
 
 			<p>
@@ -54,12 +54,12 @@
 				<?php echo $account->getError(Constants::$emailInvalid); ?>
                 <?php echo $account->getError(Constants::$emailTaken); ?>
 				<label for="email">Email</label>
-				<input id="email" name="email" type="email" value="<?php getInputValue('email') ?>" required>
+				<input id="email" name="email" type="email" value="<?php getInputValue('email'); ?>" required>
 			</p>
 
 			<p>
 				<label for="email2">Confirm email</label>
-				<input id="email2" name="email2" type="email" value="<?php getInputValue('email2') ?>" required>
+				<input id="email2" name="email2" type="email" value="<?php getInputValue('email2'); ?>" required>
 			</p>
 
 			<p>
