@@ -1,12 +1,12 @@
 <?php
     if(isset($_POST['loginButton'])){
-        $loginTeamname = $_POST['loginTeamname'];
+        $loginUsername = $_POST['loginUsername'];
         $loginPassword = $_POST['loginPassword'];
 
-        $loginSuccessful = $account->login($loginTeamname, $loginPassword);
+        $loginSuccessful = $account->login($loginUsername, $loginPassword);
 
         if($loginSuccessful) {
-            $_SESSION['userLoggedIn'] = $loginTeamname;
+            $_SESSION['userLoggedIn'] = $loginUsername;
             header("Location: index.php");
         }
     }

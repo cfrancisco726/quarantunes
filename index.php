@@ -18,91 +18,94 @@ if (isset($_SESSION['userLoggedIn'])) {
         <link rel="stylesheet" type="text/css" href="assets/css/style.css" > 
     </head>
     <body>
-        <div id="playerBarContainer">
-            <div id="playerBar">
+        <div class="mainContainer">
+            <div id="topContainer"></div>
 
-                <div id="playerBarLeft">
-                    <div class="container content">
-                        <div class="albumArt">
-                            <img src="assets/images/album-covers/theLowEndTheory.png" alt="album-cover" class="albumCover">
-                        </div>
+            <div id="playerBarContainer">
+                <div id="playerBar">
 
-                        <div class="trackInfo">
-                            <div class="trackArtist">
-                                <div>A Tribe Called Quest</div>
+                    <div id="playerBarLeft">
+                        <div class="container content">
+                            <div class="albumArt">
+                                <img src="assets/images/album-covers/theLowEndTheory.png" alt="album-cover" class="albumCover">
                             </div>
-                        
-                            <div class="trackSong">
-                                <div>Excursions</div>
+
+                            <div class="trackInfo">
+                                <div class="trackArtist">
+                                    <div>A Tribe Called Quest</div>
+                                </div>
+                            
+                                <div class="trackSong">
+                                    <div>Excursions</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div id="playerBarMiddle">
-                    <div class="container playerControls"></div>
-                        <div class="buttons">
+                    <div id="playerBarMiddle">
+                        <div class="container playerControls"></div>
+                            <div class="buttons">
 
-                            <button class="controlButton shuffle" title="Shuffle button">
-                                <img src="assets/images/icons/shuffle.png" alt="shuffle">
-                            </button>
+                                <button class="controlButton shuffle" title="Shuffle button">
+                                    <img src="assets/images/icons/shuffle.png" alt="shuffle">
+                                </button>
 
-                            <button class="controlButton last" title="Last button">
-                                <img src="assets/images/icons/last.png" alt="last">
-                            </button>
+                                <button class="controlButton last" title="Last button">
+                                    <img src="assets/images/icons/last.png" alt="last">
+                                </button>
 
-                            <button class="controlButton play" title="Play button">
-                                <img src="assets/images/icons/play.png" title="Play button"alt="play">
-                            </button>
+                                <button class="controlButton play" title="Play button">
+                                    <img src="assets/images/icons/play.png" title="Play button"alt="play">
+                                </button>
 
-                            <button class="controlButton pause" title="Pause button" style="display: none;">
-                                <img src="assets/images/icons/pause.png" title="Pause button" alt="pause">
-                            </button>
+                                <button class="controlButton pause" title="Pause button" style="display: none;">
+                                    <img src="assets/images/icons/pause.png" title="Pause button" alt="pause">
+                                </button>
+                                
+
+                                <button class="controlButton next" title="Next button">
+                                    <img src="assets/images/icons/next.png"  alt="next">
+                                </button>
+
+                                <button class="controlButton repeat" title="Repeat Button">
+                                    <img src="assets/images/icons/repeat.png" alt="repeat">
+                                </button>
+
+                            </div>
+                            <div class="progressBarContainer">
+                                <div class="progressTime current">0:00</div>
+
+                                <div class="progressBar">
+                                    <div class="progressBarBg">
+                                        <div class="progress"></div>
+                                    </div>
+                                </div>
+
+                                <div class="progressTime remaining">0:00</div>
                             
+                            </div>
+                        </div>   
+                    <div>
 
-                            <button class="controlButton next" title="Next button">
-                                <img src="assets/images/icons/next.png"  alt="next">
-                            </button>
-
-                            <button class="controlButton repeat" title="Repeat Button">
-                                <img src="assets/images/icons/repeat.png" alt="repeat">
-                            </button>
-
-                        </div>
-                        <div class="progressBarContainer">
-                            <div class="progressTime current">0:00</div>
+                    <div id="playerBarRight">
+                        <div class="container volume">
+                            <div>
+                                <button class="controlButton volume" title="Volume Button">
+                                    <img src="assets/images/icons/volume.png" alt="volume">
+                                </button>
+                            </div>
 
                             <div class="progressBar">
                                 <div class="progressBarBg">
                                     <div class="progress"></div>
                                 </div>
                             </div>
-
-                            <div class="progressTime remaining">0:00</div>
                         </div>
-                    </div>   
+                    </div>
                 
-                <div>
-
-            </div>
-
-            <div id="playerBarRight">
-                <div class="container volume">
-                    <div>
-                        <button class="controlButton volume" title="Volume Button">
-                            <img src="assets/images/icons/volume.png" alt="volume">
-                         </button>
-                    </div>
-
-                    <div class="progressBar">
-                        <div class="progressBarBg">
-                            <div class="progress"></div>
-                        </div>
-                    </div>
                 </div>
-            </div>
-            
-            </div>
-        </div>    
+            </div>    
+
+        </div>
     </body>
 </html>

@@ -26,11 +26,11 @@ function getInputValue($name) {
 			<h2>Login to your account</h2>
 			<p>
             <?php echo $account->getError(Constants::$loginFailed); ?>
-				<label for="loginTeamname">Team name</label>
-				<input id="loginTeamname" name="loginTeamname" type="text"  required>
+				<label for="loginUsername">username</label>
+				<input id="loginUsername" name="loginUsername" type="text"  required>
 			</p>
 			<p>
-				<label for="loginPassword">Password</label>
+				<label for="loginPassword">password</label>
 				<input id="loginPassword" name="loginPassword"      type="password" required>  
 			</p>
 
@@ -41,12 +41,24 @@ function getInputValue($name) {
 
 
 		<form id="register" action="register.php" method="POST">
-			<h2>Create team account</h2>
+            <h2>Create account</h2>
+            
+            <p>
+				<label for="firstname">firstname</label>
+				<input id="firstname" name="firstname" type="text" value="<?php getInputValue('firstname'); ?>" required>
+            </p>
+            
+
 			<p>
-				<?php echo $account->getError(Constants::$teamnameCharacters); ?>
-                <?php echo $account->getError(Constants::$teamnameTaken); ?>
-				<label for="teamname">Team name</label>
-				<input id="teamname" name="teamname" type="text" value="<?php getInputValue('teamname'); ?>" required>
+				<label for="lastname">lastname</label>
+				<input id="lastname" name="lastname" type="text" value="<?php getInputValue('lastname'); ?>" required>
+			</p>
+
+            <p>
+                <?php echo $account->getError(Constants::$usernameCharacters); ?>
+				<?php echo $account->getError(Constants::$usernameTaken); ?>
+				<label for="username">username</label>
+				<input id="username" name="username" type="text" value="<?php getInputValue('username'); ?>" required>
 			</p>
 
 			<p>
@@ -75,7 +87,9 @@ function getInputValue($name) {
 				<input id="password2" name="password2" type="password"  required>
 			</p>
 
-			<button type="submit" name="registerButton">SIGN UP</button>
+            <button type="submit" name="registerButton">SIGN UP</button>
+        <?php echo $result ?>;
+            
 			
 		</form>
 

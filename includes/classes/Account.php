@@ -8,11 +8,11 @@ class Account {
 		$this->errorArray = [];
 	}
 
-	public function login($tn, $pw) {
+	public function login($un, $pw) {
 		$pw = md5($pw);
 		$loginQuery = mysqli_query(
 			$this->con,
-			"SELECT * FROM users WHERE teamname='$tn' and password='$pw' "
+			"SELECT * FROM users WHERE username='$un' and password='$pw' "
 		);
 
 		if (mysqli_num_rows($loginQuery) == 1) {
@@ -23,13 +23,13 @@ class Account {
 		}
 	}
 
-	public function register($tn, $em, $em2, $pw, $pw2) {
-		$this->validateTeamname($tn);
+	public function register($fn, $ln, $un, $em, $em2, $pw, $pw2) {
+		$this->validateUsername($un);
 		$this->validateEmails($em, $em2);
 		$this->validatePasswords($pw, $pw2);
 
 		if (empty($this->errorArray) == true) {
-			return $this->insertUserDetails($tn, $em, $pw);
+			return $this->insertUserDetails($fn, $ln, $un, $em, $pw);
 		} else {
 			return false;
 		}
@@ -42,30 +42,31 @@ class Account {
 		return "<span class='errorMessage'>$error</span>";
 	}
 
-	private function insertUserDetails($tn, $em, $pw) {
+	private function insertUserDetails($fn, $ln, $un, $em, $pw) {
 		$encryptedPw = md5($pw);
 		$profilePic = 'assets/images/profile-pics/group-profile-pic';
 		$date = date('Y-m-d');
 
 		$result = mysqli_query(
 			$this->con,
-			"INSERT INTO users VALUES (null, '$tn', '$em', '$encryptedPw', '$date', '$profilePic')"
-		);
-		return $result;
+			"INSERT INTO users VALUES (null, '$fn', '$ln', '$un', '$em', '$encryptedPw', '$date', '$profilePic')"
+        );
+        return $result;
+
 	}
 
-	private function validateTeamname($tn) {
-		if (strlen($tn) > 25 || strlen($tn) < 3) {
-			array_push($this->errorArray, Constants::$teamnameCharacters);
+	private function validateUsername($un) {
+		if (strlen($un) > 25 || strlen($un) < 3) {
+			array_push($this->errorArray, Constants::$usernameCharacters);
 			return;
 		}
 
-		$checkTeamnameQuery = mysqli_query(
+		$checkUsernameQuery = mysqli_query(
 			$this->con,
-			"SELECT email FROM users WHERE teamname='$tn'"
+			"SELECT username FROM users WHERE username='$un'"
 		);
-		if (mysqli_num_rows($checkTeamnameQuery) != 0) {
-			array_push($this->errorArray, Constants::$teamnameTaken);
+		if (mysqli_num_rows($checkUsernameQuery) != 0) {
+			array_push($this->errorArray, Constants::$usernameTaken);
 			return;
 		}
 	}
@@ -83,7 +84,7 @@ class Account {
 
 		$checkEmailQuery = mysqli_query(
 			$this->con,
-			"SELECT teamname FROM users WHERE email='$em'"
+			"SELECT email FROM users WHERE email='$em'"
 		);
 		if (mysqli_num_rows($checkEmailQuery) != 0) {
 			array_push($this->errorArray, Constants::$emailTaken);
