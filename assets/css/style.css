@@ -1,0 +1,156 @@
+.html,
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-family:sans-serif;
+}
+
+#playerBarContainer {
+    width: 100%;
+    background-color: #282828;
+    position: fixed;
+    min-width: 620px;
+    height: 100px;
+    bottom: 0;
+}
+
+#playerBar {
+    display: flex;
+    height: 100px;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #a0a0a0;
+    width: 100%;
+}
+
+#playerBarLeft,
+#playerBarRight {
+    width: 30%;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+}
+
+#playerBarMiddle {
+    width: 40%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container .playerControls {
+    width: 100%;
+}
+
+.playerButton {
+	background-color: transparent;
+    border: none;
+    vertical-align: middle;
+}
+
+.playerControls .buttons {
+	margin: 0 auto;
+    display: table;
+}
+
+.controlButton {
+    background-color: transparent;
+    border: none;
+    vertical-align: middle;
+}
+
+.controlButton img {
+    width: 30px;
+    height: 30px;
+}
+
+.controlButton.play img,
+.controlButton.pause img {
+    width:52px;
+    height:52px;
+}
+
+
+.controlButton:hover,
+.playerBar:hover {
+    cursor: pointer;
+}
+
+.progressBarContainer { 
+    display: flex;
+    width: 100%;
+    vertical-align: middle;
+}
+
+.progressBar { 
+    width: 100%;
+    height: 14px;
+    display: inline-flex;
+    text-align: center;
+    padding: 4px;
+    margin-top:4px;
+}
+
+.progressBarBg { 
+    background-color: #404040;
+    width:100%;
+    height: 4px;
+    border-radius: 3px;
+}
+
+.progress { 
+    background-color: #a0a0a0;
+    height: 4px;
+    width: 20%;
+    border-radius: 3px;
+}
+
+.progressTime {
+    padding: 0 5px 0 5px;;
+}
+
+#playerBarLeft .albumCover {
+    height: 60px;
+    margin: 10px 20px;
+}
+
+.container.content {
+    display: flex;
+}
+
+.trackInfo {
+    margin-top: 20px;
+}
+
+.trackInfo .trackArtist {
+    color: white;
+}
+
+.trackInfo .trackSong {
+    font-size: 14px;
+}
+.container.volume {
+    position: absolute;
+    width: 200px;
+    right: 0;
+    display: inline-flex;
+    margin-top: 20px;
+}
+
+
+.container.volume .progressBar { 
+    width: 120px;
+    margin-top: 10px;
+}
+
+#topContainer {
+    min-height: 100%;
+    width: 100%;
+}
+
+#navBarContainer {
+    height: 100vh;
+    background: black;
+}

@@ -7,7 +7,7 @@
         return $input;
     }
 
-    function sanitizeTeamname($input) {
+    function sanitizeUsername($input) {
         $input = strip_tags($input);
         $input = str_replace(" ", "", $input);
         return $input;
@@ -20,15 +20,18 @@
 
 
     if(isset($_POST['registerButton'])) {
-        $teamname = sanitizeTeamname($_POST['teamname']);
+        $username = sanitizeUsername($_POST['username']);
+        $firstname = sanitizeString($_POST['firstname']);
+        $lastname = sanitizeString($_POST['lastname']);
         $email = sanitizeString($_POST['email']);
         $email2 = sanitizeString($_POST['email2']);
         $password = sanitizePassword($_POST['password']);
         $password2 = sanitizePassword($_POST['password2']);
 
-        $wasSuccessful = $account->register($teamname, $email, $email2, $password, $password2);
+        $registerSuccessful = $account->register( $firstname, $lastname, $username, $email, $email2, $password, $password2);
 
-        if($wasSuccessful == true) { 
+        if($registerSuccessful) { 
+            $_SESSION['userLoggedIn'] = $loginUsername;
             header("Location: index.php");
         }
     }
