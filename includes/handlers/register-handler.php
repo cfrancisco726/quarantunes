@@ -28,11 +28,12 @@
         $password = sanitizePassword($_POST['password']);
         $password2 = sanitizePassword($_POST['password2']);
 
-        $registerSuccessful = $account->register( $firstname, $lastname, $username, $email, $email2, $password, $password2);
+        $registerSuccessful = $account->register($firstname, $lastname, $username, $email, $email2, $password, $password2);
 
         if($registerSuccessful) { 
-            $_SESSION['userLoggedIn'] = $loginUsername;
+            $_SESSION['userLoggedIn'] = $username;
             header("Location: index.php");
         }
+
     }
 ?>

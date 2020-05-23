@@ -6,7 +6,7 @@ class Account {
 	public function __construct($con) {
 		$this->con = $con;
 		$this->errorArray = [];
-	}
+    }
 
 	public function login($un, $pw) {
 		$pw = md5($pw);
@@ -29,10 +29,12 @@ class Account {
 		$this->validatePasswords($pw, $pw2);
 
 		if (empty($this->errorArray) == true) {
-			return $this->insertUserDetails($fn, $ln, $un, $em, $pw);
+            return $this->insertUserDetails($fn, $ln, $un, $em, $pw);
+            echo "insertUserDetails";
 		} else {
 			return false;
-		}
+        }
+        
 	}
 
 	public function getError($error) {
@@ -49,8 +51,7 @@ class Account {
 
 		$result = mysqli_query(
 			$this->con,
-			"INSERT INTO users VALUES (null, '$fn', '$ln', '$un', '$em', '$encryptedPw', '$date', '$profilePic')"
-        );
+			"INSERT INTO users VALUES (null, '$fn', '$ln', '$un', '$em', '$encryptedPw', '$date', '$profilePic')");
         return $result;
 
 	}

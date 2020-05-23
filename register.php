@@ -13,6 +13,7 @@ function getInputValue($name) {
         echo $_POST[$name];
     }
 }
+// session_destroy();
 ?>
 
 <html>
@@ -88,8 +89,6 @@ function getInputValue($name) {
 			</p>
 
             <button type="submit" name="registerButton">SIGN UP</button>
-        <?php echo $result ?>;
-            
 			
 		</form>
 
