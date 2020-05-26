@@ -19,7 +19,12 @@ if (isset($_SESSION['userLoggedIn'])) {
     </head>
     <body>
         <div class="mainContainer">
-            <div id="topContainer"></div>
+
+            <div id="topContainer">
+                <div id="navBarContainer">
+                
+                </div>
+            </div>
 
             <div id="playerBarContainer">
                 <div id="playerBar">
