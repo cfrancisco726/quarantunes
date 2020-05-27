@@ -22,7 +22,39 @@ if (isset($_SESSION['userLoggedIn'])) {
 
             <div id="topContainer">
                 <div id="navBarContainer">
-                
+                    <nav class="navbar">
+
+                    <div class="">
+                        <a href="">
+                            <div class="navItem">LOGO</div>
+                        </a>
+                    </div>
+                        
+                    <div class="navGroup">
+                        <a href="search.php">
+                            <div class="navItem">Search</div>
+                        </a>
+                    </div>
+
+                    <div class="navGroup">
+                        <a href="browse.php">
+                            <div class="navItem">Browse</div>
+                        </a>
+                    </div>
+
+                    <div class="navGroup">
+                        <a href="playlist.php">
+                            <div class="navItem">Playlist</div>
+                        </a>
+                    </div>
+
+                    <div class="navGroup">
+                        <a href="profile">
+                            <div class="navItem">Profile</div>
+                        </a>
+                    </div>
+                        
+                    </nav>
                 </div>
             </div>
 
